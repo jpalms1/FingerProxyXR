@@ -15,7 +15,7 @@ public class SerialComms : MonoBehaviour
     GameObject index, thumb;
 
     //Set the port and the baud rate to 9600
-    public string portName = "COM5";
+    public string portName = "COM3";
     public int baudRate = 115200; 
     // public int baudRate = 9600;
     SerialPort stream;

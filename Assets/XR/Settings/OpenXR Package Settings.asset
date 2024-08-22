@@ -280,6 +280,26 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
+--- !u!114 &-2752084132904014303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7365b139f7aec43b23d26b7a48b5a6, type: 3}
+  m_Name: MetaQuestTouchPlusControllerProfile Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Meta Quest Touch Plus Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.metaquestplus
+  openxrExtensionStrings: XR_META_touch_controller_plus
+  company: Unity
+  priority: 0
+  required: 0
 --- !u!114 &-2091229474418810742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,6 +343,26 @@ MonoBehaviour:
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.microsoftmotioncontroller
   openxrExtensionStrings: 
+  company: Unity
+  priority: 0
+  required: 0
+--- !u!114 &-2006334089114528072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7365b139f7aec43b23d26b7a48b5a6, type: 3}
+  m_Name: MetaQuestTouchPlusControllerProfile Metro
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Meta Quest Touch Plus Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.metaquestplus
+  openxrExtensionStrings: XR_META_touch_controller_plus
   company: Unity
   priority: 0
   required: 0
@@ -495,19 +535,18 @@ MonoBehaviour:
   m_Name: Standalone
   m_EditorClassIdentifier: 
   features:
-  - {fileID: 3846331630634772618}
   - {fileID: -7156135449824343128}
   - {fileID: 8370471873839621754}
   - {fileID: -1564083409738890966}
   - {fileID: 2857570431092469374}
   - {fileID: -3887114174965101871}
-  - {fileID: 544967468879794874}
   - {fileID: -2091229474418810742}
   - {fileID: 3721901920906642127}
   - {fileID: -7108543573933442476}
   - {fileID: 6440735647233525071}
   - {fileID: -1683243347663226950}
   - {fileID: -5443066324577763617}
+  - {fileID: -2752084132904014303}
   - {fileID: 665436112530234248}
   - {fileID: -8951081433117380537}
   - {fileID: -2034474464604881175}
@@ -516,11 +555,16 @@ MonoBehaviour:
   - {fileID: 8063531439067654851}
   - {fileID: -1251553982454374653}
   - {fileID: 4372398097003305369}
-  - {fileID: 8766085817980850978}
   - {fileID: 8240026735911042245}
   - {fileID: -633496636266632011}
   - {fileID: 611408536128102015}
+  - {fileID: 544967468879794874}
+  - {fileID: 8766085817980850978}
+  - {fileID: 3846331630634772618}
   m_renderMode: 1
+  m_autoColorSubmissionMode: 1
+  m_colorSubmissionModes:
+    m_List: 00000000
   m_depthSubmissionMode: 0
   m_optimizeBufferDiscards: 0
   m_symmetricProjection: 0
@@ -973,18 +1017,17 @@ MonoBehaviour:
   m_Name: Metro
   m_EditorClassIdentifier: 
   features:
-  - {fileID: -4302264474066196578}
   - {fileID: 6587866829032701044}
   - {fileID: -8945490927781540530}
   - {fileID: -7244571332398467556}
   - {fileID: -1625341953436738524}
   - {fileID: 3362946596763128716}
-  - {fileID: -8755091521998284800}
   - {fileID: 3681336675177712107}
   - {fileID: -670094677921334429}
   - {fileID: 172054836309350724}
   - {fileID: 5864804438168496456}
   - {fileID: -4320906571640633039}
+  - {fileID: -2006334089114528072}
   - {fileID: 1115878592475440088}
   - {fileID: 2229227268186988804}
   - {fileID: -2871837933375411319}
@@ -995,7 +1038,12 @@ MonoBehaviour:
   - {fileID: 4554121909123195931}
   - {fileID: 1177885508449839335}
   - {fileID: -5064642689115184909}
+  - {fileID: -8755091521998284800}
+  - {fileID: -4302264474066196578}
   m_renderMode: 1
+  m_autoColorSubmissionMode: 1
+  m_colorSubmissionModes:
+    m_List: 00000000
   m_depthSubmissionMode: 0
   m_optimizeBufferDiscards: 0
   m_symmetricProjection: 0
