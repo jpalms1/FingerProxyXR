@@ -15,9 +15,9 @@ public class SerialComms : MonoBehaviour
     GameObject index, thumb;
 
     //Set the port and the baud rate to 9600
-    public string portName = "COM3";
-    public int baudRate = 115200; 
-    // public int baudRate = 9600;
+    public string portName = "COM9";
+    //public int baudRate = 115200;
+    public int baudRate = 9600;
     SerialPort stream;
 
     private float lastTime = 0.0f;
@@ -71,7 +71,7 @@ public class SerialComms : MonoBehaviour
     void Update()
     {
         //Debug.Log("SerialComms.cs");
-        if (stream.IsOpen || !stream.IsOpen)
+        if (stream.IsOpen || !stream.IsOpen)  // 
         {
             currentTime = Time.time;
 
@@ -82,17 +82,18 @@ public class SerialComms : MonoBehaviour
                 Vector3 thumb_force = thumb.GetComponent<FingerProxy>().force;
                 float index_torque = index.GetComponent<FingerProxy>().torqueMag;
                 float thumb_torque = thumb.GetComponent<FingerProxy>().torqueMag;
-                index_force.y *= -1;
+                index_force.y *= -1;  // Changed direction to consider  Unity's LHC 
                 float index_magF = Mathf.Sqrt(index_force.sqrMagnitude);
                 float index_shear = Mathf.Sqrt(index_force.x * index_force.x + index_force.y * index_force.y);
-                thumb_force.x *= -1;
-                thumb_force.y *= -1;
+                thumb_force.x *= -1; // Changed direction to consider  Unity's LHC 
+                thumb_force.y *= -1; // Changed direction to consider  Unity's LHC 
                 float thumb_magF = Mathf.Sqrt(thumb_force.sqrMagnitude);
                 float thumb_shear = Mathf.Sqrt(thumb_force.x * thumb_force.x + thumb_force.y * thumb_force.y);
                 
                 // Message for Regular hoxels
-                string message = index_force.x.ToString("0.00") + " " + index_force.y.ToString("0.00") + " " + index_force.z.ToString("0.00") + " " + index_magF.ToString("0.00") + " " + index_shear.ToString("0.00") + " " + index_torque.ToString("0.000") + "\n";
+                //string message = index_force.x.ToString("0.00") + " " + index_force.y.ToString("0.00") + " " + index_force.z.ToString("0.00") + " " + index_magF.ToString("0.00") + " " + index_shear.ToString("0.00") + " " + index_torque.ToString("0.000") + "\n";
                 // message = message + " " + thumb_force.x.ToString("0.00") + " " + thumb_force.y.ToString("0.00") + " " + thumb_force.z.ToString("0.00") + " " + thumb_magF.ToString("0.00") + " " + thumb_shear.ToString("0.00") + '\n';
+                string message =  index_magF.ToString("0.00") + "A" + thumb_magF.ToString("0.00") + "B" + "\n";
 
                 // Message for finger prints
                 string message2 = index_force.x.ToString("0.00") + " " + index_force.y.ToString("0.00") + " " + index_force.z.ToString("0.00") + " " + index_torque.ToString("0.000");
@@ -115,7 +116,7 @@ public class SerialComms : MonoBehaviour
                     writeSerial(message);
                     lastTime = currentTime;
 
-                    // Close stream to avoid semaphore error 
+                    // Close stream to avoid semaphore error --- check later on Jasmin's PCs
                     stream.Close();
                     oldMessage = message;
                 }
@@ -137,7 +138,6 @@ public class SerialComms : MonoBehaviour
             //read stuff
             try
             {
-
                 stream.Write(message);
                 Debug.Log("MESSAGE: " + message);
             }
@@ -147,9 +147,7 @@ public class SerialComms : MonoBehaviour
                 Debug.Log("Failed MESSAGE: " + message);
                 print(e);
                 print(Time.time);
-            }
-           
-        
+            }    
         }
        
     }

@@ -18,14 +18,14 @@ public class FingerProxy : MonoBehaviour
     public Vector3 distance, force, normalForce;
     public Vector3 torque;
     public float torqueMag;
-    float oldAngle, angleChange;
+    float oldAngle, angleChange; // Previous angle value (absolute), delta angle
 
     // enteredMesh keeps track of if the finger just entered this frame
     // isFingerInMesh keeps track of if the finger is in the mesh
     bool enteredMesh;
     public bool isFingerInMesh;
 
-    // Constants for calculating torque
+    // Constants for calculating torque  -- from Papers in Talise's GDrive --  "Char. of Tissue Stiffness", "Mechanical Properties and Young's Mod"
     float fingerRadius = 0.002f;
     float skinFriction = 0.46f;
     float skinThickness = 0.02f;
@@ -65,7 +65,7 @@ public class FingerProxy : MonoBehaviour
         {
             isFingerInMesh = true;
         }
-        else if (Vector3.Distance(hits[0].point, transform.position) <= 0.01525)
+        else if (Vector3.Distance(hits[0].point, transform.position) <= 0.01525) // 0.01525 =  distance from orgin of finger object to tip to finger object
         {
             isFingerInMesh = true;
         }
@@ -74,7 +74,7 @@ public class FingerProxy : MonoBehaviour
             isFingerInMesh = false;
         }
 
-        // Detect a hit from the backwards ray
+        // Detect a hit from the backwards ray // ray from orgina of finger and outwards toward the skin
         RaycastHit hit;
         if (Physics.Raycast(ray2, out hit, 100, mask))
         {
@@ -82,6 +82,7 @@ public class FingerProxy : MonoBehaviour
             {
                 // UnityEngine.Debug.DrawLine(ray2.origin, transform.position, Color.red);
                 
+                // Finding the angle for Torque Rendering:
                 // Set the initial angle for when the finger entered the skin and current angle
                 if (enteredMesh == false)
                 {
@@ -92,7 +93,7 @@ public class FingerProxy : MonoBehaviour
                 else
                 { 
                     float angleDelta = transform.eulerAngles.z - oldAngle;
-                    if (angleDelta > 100)
+                    if (angleDelta > 100)  // Set a lower threshold due to being within the Update function (1 frame)
                     {
                         angleDelta -= 360;
                         
@@ -106,7 +107,7 @@ public class FingerProxy : MonoBehaviour
                     // print(angleChange);
                 }
 
-
+                // The rest of finger proxy
                 // Finger is inside the skin so move proxy to hit point
                 proxyToPlace.position = hit.point;
 
@@ -136,9 +137,7 @@ public class FingerProxy : MonoBehaviour
                 torque *= 0;
                 torqueMag = 0;
                 enteredMesh = false;
-
             }
-
         }
         else
         {
@@ -149,11 +148,7 @@ public class FingerProxy : MonoBehaviour
             torque *= 0;
             torqueMag = 0;
             enteredMesh = false;
-
         }
-
-        
         //print(distance);
-
     }
 }

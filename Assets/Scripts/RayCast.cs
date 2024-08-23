@@ -28,7 +28,6 @@ public class RayCast : MonoBehaviour
             GameObject.Find("Male_Skeletal_Intervertabral_Discs_Geo"),
             GameObject.Find("Nervous_Brain_Stem_Geo"),
             GameObject.Find("Skeleton") };
-
     }
 
     // Update is called once per frame
